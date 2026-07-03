@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twenty-Six Mane | Hair Studio — Gilbert Plains</title>
+    <!-- Google Fonts: Inter + Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FCF9F6;
+            color: #2C2A29;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* ----- EXACT BRAND GREEN: #558632 ----- */
+        :root {
+            --brand-green: #558632;
+            --brand-green-dark: #3D6B24;
+            --brand-green-light: #6BA34A;
+            --brand-green-transparent: rgba(85, 134, 50, 0.10);
+            --brand-green-soft: #EDF3E7;
+            --pure-white: #FFFFFF;
+            --deep-charcoal: #2C2A29;
+            --cream-bg: #FCF9F6;
+            --sand-bg: #F2EDE7;
+            --muted-text: #6B5B52;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06);
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ----- TYPOGRAPHY ----- */
+        h1, h2, h3, .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin: 3rem 0 1.8rem 0;
+            border-left: 6px solid var(--brand-green);
+            padding-left: 1.2rem;
+            color: #2C2A29;
+            letter-spacing: -0.3px;
+        }
+        .section-title span {
+            color: var(--brand-green);
+        }
+
+        /* ===== HERO SLIDESHOW / VIDEO ===== */
+        .hero-slideshow {
+            position: relative;
+            height: 90vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .hero-slide video,
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-slide .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 3;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 4;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .hero-content .badge {
+            background: rgba(85, 134, 50, 0.8);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-content h1 em {
+            color: #B8D6A6;
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-content .btn-primary {
+            background: var(--brand-green);
+            color: white;
+            padding: 14px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(85, 134, 50, 0.4);
+        }
+
+        .hero-content .btn-primary:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(85, 134, 50, 0.5);
+        }
+
+        .hero-content .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+            margin-left: 12px;
+        }
+
+        .hero-content .btn-outline:hover {
+            background: white;
+            color: #2C2A29;
+        }
+
+        .slide-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .slide-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .slide-dots .dot.active {
+            background: var(--brand-green);
+            transform: scale(1.2);
+        }
+
+        /* ===== GIFT CARD SECTION ===== */
+        .gift-card-section {
+            background: linear-gradient(145deg, #2A4020, #1A2D12);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift-card-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(85, 134, 50, 0.08);
+            border-radius: 50%;
+        }
+
+        .gift-card-section::after {
+            content: '✦';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            font-size: 200px;
+            color: rgba(85, 134, 50, 0.06);
+        }
+
+        .gift-card-section h2 {
+            font-size: 3rem;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gift-card-section p {
+            color: #B8D6A6;
+            font-size: 1.1rem;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .btn-gift {
+            background: transparent;
+            border: 2px solid var(--brand-green);
+            color: var(--brand-green);
+            padding: 14px 48px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-gift:hover {
+            background: var(--brand-green);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(85, 134, 50, 0.4);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background: var(--pure-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(85, 134, 50, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 0.8rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            color: var(--brand-green);
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: #6B7A5A;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--deep-charcoal);
+            transition: 0.2s;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-green);
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-green);
+        }
+
+        .btn-book-nav {
+            background: var(--brand-green);
+            color: white !important;
+            padding: 10px 26px;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .btn-book-nav::after {
+            display: none !important;
+        }
+
+        .btn-book-nav:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(85, 134, 50, 0.3);
+        }
+
+        /* ===== SERVICE CARDS ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--pure-white);
+            border-radius: var(--radius-md);
+            padding: 1.8rem 1.8rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid #F0E8E0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--brand-green);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: #D4E0CC;
+        }
+
+        .service-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .price {
+            color: var(--brand-green);
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: var(--brand-green-soft);
+            padding: 2px 14px;
+            border-radius: 40px;
+        }
+
+        .service-desc {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            margin: 12px 0 8px;
+            line-height: 1.5;
+        }
+
+        .book-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: var(--brand-green-soft);
+            padding: 8px 22px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--brand-green);
+            transition: 0.25s;
+        }
+
+        .book-link:hover {
+            background: var(--brand-green);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .duration {
+            font-size: 0.75rem;
+            color: #8F7A6C;
+            margin-top: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-olaplex {
+            background: #E1EFD8;
+            border-radius: 40px;
+            padding: 3px 14px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--brand-green-dark);
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* ===== STYLIST CARDS ===== */
+        .stylist-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--sand-bg);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .stylist-card {
+            flex: 1;
+            background: var(--pure-white);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.8rem;
+            text-align: center;
+            border-top: 5px solid var(--brand-green);
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+        }
+
+        .stylist-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stylist-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--brand-green);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stylist-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8F9A82;
+            margin-bottom: 10px;
+        }
+
+        /* ===== WAX MINI BADGES ===== */
+        .mini-service-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .mini-item {
+            background: var(--pure-white);
+            border-radius: 60px;
+            padding: 8px 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #E8DFD6;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .mini-item:hover {
+            border-color: var(--brand-green);
+            background: var(--brand-green-soft);
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #E0D6CC;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 380px;
+            border: 0;
+            display: block;
+        }
+
+        /* ===== CLIENT PORTAL ===== */
+        .client-portal-card {
+            background: var(--brand-green-soft);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem;
+            text-align: center;
+            margin: 2rem 0 1.8rem;
+            border: 1px solid #C8DBC0;
+        }
+
+        .client-portal-card h3 {
+            color: #2A4020;
+            font-size: 1.6rem;
+        }
+
+        .portal-btn {
+            background: var(--brand-green);
+            display: inline-block;
+            padding: 14px 40px;
+            border-radius: 60px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: 0.25s;
+            box-shadow: 0 4px 14px rgba(85, 134, 50, 0.25);
+        }
+
+        .portal-btn:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(85, 134, 50, 0.35);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form-section {
+            background: var(--pure-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #ECE3DA;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2C2A29;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid #E0D4CA;
+            font-family: 'Inter', sans-serif;
+            background: #FEFCFA;
+            transition: 0.25s;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-green);
+            box-shadow: 0 0 0 4px rgba(85, 134, 50, 0.10);
+        }
+
+        .btn-submit {
+            background: var(--brand-green);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(85, 134, 50, 0.3);
+        }
+
+        .form-message {
+            margin-top: 1.2rem;
+            padding: 14px 20px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #E1F3E4;
+            color: #1F5530;
+            display: block;
+            border-left: 4px solid var(--brand-green);
+        }
+
+        .form-message.error {
+            background: #FEE9E7;
+            color: #B13E3E;
+            display: block;
+            border-left: 4px solid #B13E3E;
+        }
+
+        /* ===== CONSULTATION ===== */
+        .consultation {
+            background: linear-gradient(145deg, #F5F9F0, #ECF3E5);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            border: 1px solid #D4E0CC;
+        }
+
+        .consultation h3 {
+            font-size: 1.8rem;
+            color: #2A4020;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1F2C1A;
+            color: #CDDFC0;
+            margin-top: 4rem;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+
+        .footer-col h4 {
+            color: #B8D6A6;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            color: #DDE8D4;
+            text-decoration: none;
+            display: block;
+            margin: 6px 0;
+            transition: 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #B8D6A6;
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2.5rem;
+            border-top: 1px solid #3F5438;
+            padding-top: 1.8rem;
+            font-size: 0.85rem;
+            color: #A0B894;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-slideshow {
+                height: 70vh;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .gift-card-section h2 {
+                font-size: 2.2rem;
+            }
+            .stylist-row {
+                padding: 1.5rem;
+            }
+            .map-container iframe {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .hero-content .btn-outline {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-section {
+                padding: 1.5rem;
+            }
+            .gift-card-section {
+                padding: 2.5rem 1rem;
+            }
+            .gift-card-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">✧</div>
+                <div>
+                    <h1>Twenty-Six Mane</h1>
+                    <p>Licensed Red Seal Hairstylist · Apprentice Studio</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#stylists">Team</a>
+                <a href="#location">Visit</a>
+                <a href="#contact">Contact</a>
+                <a href="https://twenty-six-mane.square.site/" target="_blank" class="btn-book-nav">Book now →</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SLIDESHOW ===== -->
+    <section class="hero-slideshow" id="hero">
+        <!-- SLIDE 1 - Video Background -->
+        <div class="hero-slide active">
+            <!-- Replace src with your video URL -->
+            <video autoplay muted loop playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <div class="badge">✦ Red Seal · Jenelle Dutcheshen</div>
+                <h1>Vibrant colour.<br /><em>Effortless texture.</em></h1>
+                <p>Balayage, precision cuts, gloss &amp; bridal updos. Thoughtful service in the heart of Gilbert Plains.</p>
+                <div>
+                    <a href="https://twenty-six-mane.square.site/" target="_blank" class="btn-primary">Book your experience</a>
+                    <a href="#contact" class="btn-outline">Get in touch</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 - Image Background -->
+        <div class="hero-slide">
+            <!-- Replace src with your image URL -->
+            <img src="https://images.unsplash.com/photo-1560066984-9d1b58cd2b41?w=1200&h=800&fit=crop" alt="Hair styling" />
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <div class="badge">✦ Precision &amp; Artistry</div>
+                <h1>Where hair becomes<br /><em>art.</em></h1>
+                <p>Expert cuts, dimensional colour, and styles that elevate your everyday look.</p>
+                <div>
+                    <a href="https://twenty-six-mane.square.site/" target="_blank" class="btn-primary">Book your experience</a>
+                    <a href="#services" class="btn-outline">View services</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 - Image Background -->
+        <div class="hero-slide">
+            <!-- Replace src with your image URL -->
+            <img src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=1200&h=800&fit=crop" alt="Salon experience" />
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <div class="badge">✦ Relaxed Luxury</div>
+                <h1>Your hair,<br /><em>reimagined.</em></h1>
+                <p>From balayage to bridal updos — every service is tailored to you.</p>
+                <div>
+                    <a href="https://twenty-six-mane.square.site/" target="_blank" class="btn-primary">Book your experience</a>
+                    <a href="#contact" class="btn-outline">Get in touch</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide Navigation Dots -->
+        <div class="slide-dots">
+            <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+            <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+
+        <!-- LIGHTENING -->
+        <h2 class="section-title" id="services">☀️ <span>Lightening</span> &amp; Balayage</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-name">Balayage <span class="price">$150</span></div><div class="service-desc">1oz lightener + 1–1.5oz toner. Additional scoop $25. Hand-painted, seamless grow-out.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now →</a><div class="duration">⏱ 3 hrs</div></div>
+            <div class="service-card"><div class="service-name">Mini Foil <span class="price">$105</span></div><div class="service-desc">Brighten hairline or part area. Half scoop + .5oz toner.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now →</a><div class="duration">⏱ 2 hrs</div></div>
+            <div class="service-card"><div class="service-name">Full Foil <span class="price">$180+</span></div><div class="service-desc">2oz lightener + toner. Full dimensional brightness.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now →</a><div class="duration">⏱ 3 hrs</div></div>
+            <div class="service-card"><div class="service-name">Partial Foil <span class="price">$145</span></div><div class="service-desc">1oz lightener + 1oz toner. ✨ Olaplex available.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now →</a><div class="duration">⏱ 2h45</div><div class="badge-olaplex">+ Olaplex add-on</div></div>
+        </div>
+
+        <!-- CUTS -->
+        <h2 class="section-title">✂️ <span>Precision</span> Haircuts</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-name">Bang Trim <span class="price">$10</span></div><div class="service-desc">Quick refresh, 15 min express.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 15 min</div></div>
+            <div class="service-card"><div class="service-name">Kid Cut · Jenelle <span class="price">$25</span></div><div class="service-desc">Ages 0–11, wash &amp; style.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 30 min</div></div>
+            <div class="service-card"><div class="service-name">Kid Cut · Kyra <span class="price">$22</span></div><div class="service-desc">Ages 0–11, wash + style.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 30 min</div></div>
+            <div class="service-card"><div class="service-name">Ladies Cut · Jenelle <span class="price">$44</span></div><div class="service-desc">Wash, precision cut &amp; blowout.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 45 min</div></div>
+            <div class="service-card"><div class="service-name">Ladies Cut · Kyra <span class="price">$38</span></div><div class="service-desc">Wash &amp; style included.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 45 min</div></div>
+            <div class="service-card"><div class="service-name">Men Cut · Jenelle <span class="price">$30</span></div><div class="service-desc">Wash &amp; style, sharp finish.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 30 min</div></div>
+            <div class="service-card"><div class="service-name">Men Cut · Kyra <span class="price">$26</span></div><div class="service-desc">Wash &amp; style, clean silhouette.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 30 min</div></div>
+        </div>
+
+        <!-- STYLING -->
+        <h2 class="section-title">💆‍♀️ <span>Styling</span> &amp; Updos</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-name">Full Updo <span class="price">$100</span></div><div class="service-desc">Elegant, long-lasting event style.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 1h30</div></div>
+            <div class="service-card"><div class="service-name">Half Updo <span class="price">$65</span></div><div class="service-desc">Romantic, textured finish.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 1 hr</div></div>
+            <div class="service-card"><div class="service-name">Style <span class="price">from $25</span></div><div class="service-desc">Blowout, waves, finishing.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 1 hr</div></div>
+        </div>
+
+        <!-- COLOUR -->
+        <h2 class="section-title">🎨 <span>Colour</span> XG &amp; Personalization</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-name">Gloss <span class="price">$65</span></div><div class="service-desc">Adds shine + hydration, standalone or after service.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 45 min</div></div>
+            <div class="service-card"><div class="service-name">Root Coverage <span class="price">$90</span></div><div class="service-desc">Grey coverage, natural match (1oz).</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 1h30</div></div>
+            <div class="service-card"><div class="service-name">Root Coverage (2oz) <span class="price">$130</span></div><div class="service-desc">Extended root colour.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 2 hrs</div></div>
+            <div class="service-card"><div class="service-name">Personalized Colour <span class="price">$185</span></div><div class="service-desc">Roots + ends + foils, custom blend (3oz).</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 3 hrs</div></div>
+            <div class="service-card"><div class="service-name">Tone + Haircut <span class="price">$110</span></div><div class="service-desc">Brass neutralizer + precision cut.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 1h30</div></div>
+            <div class="service-card"><div class="service-name">Tone <span class="price">$75</span></div><div class="service-desc">Remove unwanted warmth, refresh highlights.</div><a href="https://twenty-six-mane.square.site/" class="book-link">Book now</a><div class="duration">⏱ 45 min</div></div>
+        </div>
+
+        <!-- WAX -->
+        <h2 class="section-title">🌿 <span>Waxing</span> &amp; Finishing</h2>
+        <div class="mini-service-list">
+            <div class="mini-item">Wax Chin · $6 / 10 min</div>
+            <div class="mini-item">Wax Lip · $6 / 10 min</div>
+            <div class="mini-item">Wax Eyebrow · $10 / 15 min</div>
+            <div class="mini-item"><strong>💬 Consultation</strong> — free 15-min chat</div>
+        </div>
+
+        <!-- ===== GIFT CARD SECTION ===== -->
+        <div class="gift-card-section">
+            <h2>🎁 Give a Gift Card</h2>
+            <p>The perfect gift for any occasion — treat someone to beautiful hair.</p>
+            <a href="https://twenty-six-mane.square.site/" target="_blank" class="btn-gift">Buy Gift Card →</a>
+        </div>
+
+        <!-- STYLISTS -->
+        <h2 class="section-title" id="stylists">👥 <span>Our</span> Artists</h2>
+        <div class="stylist-row">
+            <div class="stylist-card">
+                <div class="stylist-name">Jenelle Dutcheshen</div>
+                <div class="stylist-title">✦ Owner · Red Seal Hairstylist</div>
+                <p>Expert in balayage, colour corrections &amp; precision cutting. Lived-in, low-maintenance hair architect with 10+ years of experience.</p>
+                <div style="margin-top: 12px;">📞 204-572-5427</div>
+            </div>
+            <div class="stylist-card">
+                <div class="stylist-name">Kyra Christensen</div>
+                <div class="stylist-title">✧ Apprentice Hairstylist</div>
+                <p>Kid cuts, men &amp; women's styling — fresh energy, trained under Jenelle. Book online &amp; choose "Kyra".</p>
+                <div style="margin-top: 12px;">⭐ Accepting new clients</div>
+            </div>
+        </div>
+
+        <!-- MAP -->
+        <h2 class="section-title" id="location">📍 <span>Find</span> Our Studio</h2>
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2533.299731638542!2d-100.5477409239173!3d51.14836427171178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52e9d89d2c9b0b6b%3A0x8c4b9f9d8c2d4e5!2s26%20Main%20St%20N%2C%20Gilbert%20Plains%2C%20MB%20R0L%200X0!5e1!3m2!1sen!2sca!4v1712345678901!5m2!1sen!2sca"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div style="background: #F2EDE7; border-radius: var(--radius-md); padding: 1.2rem 2rem; margin-bottom: 2rem;">
+            <p><strong>📍 Twenty-Six Mane</strong><br />26 Main St N, Gilbert Plains, Manitoba R0L 0X0<br />📧 jenlellyne017@gmail.com · 📞 204-572-5427</p>
+        </div>
+
+        <!-- CLIENT PORTAL -->
+        <div class="client-portal-card">
+            <h3>📅 Client Portal — manage your bookings</h3>
+            <p style="margin: 0.5rem 0 1rem;">View appointments, reschedule, or purchase packages. Your personal client hub.</p>
+            <a href="https://twenty-six-mane.square.site/" target="_blank" class="portal-btn">🔐 Go to Client Portal</a>
+            <p style="margin-top: 14px; font-size: 0.8rem; color: #5A7350;">Powered by Square Appointments</p>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <h2 class="section-title" id="contact">✉️ <span>Send</span> Us a Message</h2>
+        <div class="contact-form-section">
+            <form id="salonContactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="204-555-1234" />
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceInterest">Service of interest</label>
+                        <input type="text" id="serviceInterest" placeholder="Balayage, haircut, colour..." />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message / Questions *</label>
+                    <textarea id="message" rows="4" required placeholder="Tell us about your hair goals or ask anything..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send message →</button>
+                <div id="formFeedback" class="form-message"></div>
+            </form>
+            <p style="font-size: 0.75rem; margin-top: 1rem; color: #7A685C;">* We'll respond within 24h. Or call/text 204-572-5427.</p>
+        </div>
+
+        <!-- CONSULTATION -->
+        <div class="consultation">
+            <h3>🌱 Ready to transform your hair?</h3>
+            <p style="margin: 0.5rem 0 1.2rem;">Book a complimentary consultation — we'll design your custom plan.</p>
+            <a href="https://twenty-six-mane.square.site/" target="_blank" class="btn-primary" style="background:var(--brand-green);">Schedule consult</a>
+        </div>
+
+        <!-- FOOTER NOTE -->
+        <div style="margin: 2rem 0; font-size: 0.85rem; background: #EDF3E7; padding: 1rem 1.8rem; border-radius: 60px; text-align: center; border: 1px solid #D4E0CC;">
+            💚 <strong>Additional lightener scoops:</strong> $25 each · extra colour upcharge where noted · Olaplex available upon request.
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-flex">
+            <div class="footer-col">
+                <h4>Twenty-Six Mane</h4>
+                <p>Licensed Red Seal &amp; Apprentice Studio<br />26 Main St N, Gilbert Plains, MB</p>
+                <p style="margin-top: 6px;">📞 204-572-5427</p>
+                <p>📧 jenlellyne017@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#services">Balayage &amp; foils</a>
+                <a href="#services">Cuts &amp; styling</a>
+                <a href="#services">Colour, gloss &amp; tone</a>
+                <a href="#services">Updos &amp; waxing</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="https://twenty-six-mane.square.site/" target="_blank">Client portal / booking</a>
+                <a href="#">Instagram: @twenty.six.mane</a>
+                <a href="#">Facebook: Twenty-Six Mane</a>
+                <div style="margin-top: 8px;">🌿 #twentySixMane</div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; 2026 Twenty-Six Mane — naturally elevated hair.
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT: SLIDESHOW ===== -->
+    <script>
+        // ----- Hero Slideshow -----
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function goToSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 6000);
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideInterval);
+        }
+
+        // Dot click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopSlideshow();
+                goToSlide(index);
+                startSlideshow();
+            });
+        });
+
+        // Pause on hover
+        const heroSection = document.querySelector('.hero-slideshow');
+        heroSection.addEventListener('mouseenter', stopSlideshow);
+        heroSection.addEventListener('mouseleave', startSlideshow);
+
+        // Start the show
+        startSlideshow();
+
+        // ----- Contact Form -----
+        const contactForm = document.getElementById('salonContactForm');
+        const feedbackDiv = document.getElementById('formFeedback');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            feedbackDiv.className = 'form-message';
+            feedbackDiv.style.display = 'none';
+
+            if (name === '' || email === '' || message === '') {
+                feedbackDiv.textContent = '❌ Please fill in all required fields (name, email, message).';
+                feedbackDiv.classList.add('error');
+                feedbackDiv.style.display = 'block';
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+            if (!emailPattern.test(email)) {
+                feedbackDiv.textContent = '❌ Please enter a valid email address (e.g., name@example.com).';
+                feedbackDiv.classList.add('error');
+                feedbackDiv.style.display = 'block';
+                return;
+            }
+
+            // Success simulation
+            feedbackDiv.textContent = '✓ Message sent! Jenelle or Kyra will reply within 24 hours.';
+            feedbackDiv.classList.add('success');
+            feedbackDiv.style.display = 'block';
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                if (feedbackDiv) {
+                    feedbackDiv.style.display = 'none';
+                }
+            }, 6000);
+        });
+    </script>
+
+</body>
+</html>
